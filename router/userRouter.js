@@ -6,7 +6,7 @@ let { user } = require("../database/dbUser.js");
 
 userRouter.get("/:userId", (req, res) => {
   let data = {};
-  let message = "success";
+  let message = "success menampilkan data user sesuai id";
   let isUserFound = false;
 
   let id = req.params.userId;
@@ -27,7 +27,7 @@ userRouter.get("/:userId", (req, res) => {
 });
 
 userRouter.route("/").get((req, res) => {
-  let message = "success";
+  let message = "success menampilkan semua data user ";
   res.status(200).json(formatResponse(user, message));
 });
 
