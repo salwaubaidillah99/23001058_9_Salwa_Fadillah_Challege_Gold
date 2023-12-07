@@ -6,13 +6,13 @@ let { user } = require("../database/dbUser.js");
 
 userRouter.get("/:userId", (req, res) => {
   let data = {};
-  let message = "success menampilkan data user sesuai id";
+  let message = "success displays user data according to id";
   let isUserFound = false;
 
-  let id = req.params.userId;
+  let idUser = req.params.userId;
 
   for (let i = 0; i < user.length; i++) {
-    if (user[i].id === +id) {
+    if (user[i].id === +idUser) {
       data = user[i];
       isUserFound = true;
       break;
@@ -22,12 +22,14 @@ userRouter.get("/:userId", (req, res) => {
   if (isUserFound) {
     res.status(200).json(formatResponse(data, message));
   } else {
-    res.status(404).json(formatResponse(data, `User with id ${id} not found`));
+    res
+      .status(404)
+      .json(formatResponse(data, `User with id ${idUser} not found`));
   }
 });
 
 userRouter.route("/").get((req, res) => {
-  let message = "success menampilkan semua data user ";
+  let message = "successfully displays all user data ";
   res.status(200).json(formatResponse(user, message));
 });
 
