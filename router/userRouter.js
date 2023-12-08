@@ -28,9 +28,21 @@ userRouter.get("/:userId", (req, res) => {
   }
 });
 
-userRouter.route("/").get((req, res) => {
-  let message = "successfully displays all user data ";
-  res.status(200).json(formatResponse(user, message));
-});
+userRouter
+  .route("/")
+  .get((req, res) => {
+    let message = "successfully displays all user data ";
+    res.status(200).json(formatResponse(user, message));
+  })
+  .post((req, res) => {
+    let data = {
+      idUser: user[user.length - 1].idUser + 1,
+      username: req.body.username,
+      email: req.body.email,
+    };
+    user.push(data);
+
+    res.status(201).json(formatResponse(data, "successfully added user data"));
+  });
 
 module.exports = userRouter;
