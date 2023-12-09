@@ -20,7 +20,7 @@ userRouter
           formatResponse(null, "please provide username, email dan password")
         );
     }
-    const existingUser = user.find((user) => user.email === email);
+    let existingUser = user.find((user) => user.email === email);
     if (existingUser) {
       return res
         .status(400)
