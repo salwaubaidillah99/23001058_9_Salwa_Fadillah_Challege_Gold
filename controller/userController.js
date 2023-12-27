@@ -90,7 +90,11 @@ class UserController {
     userData[userIndex].email = email || userData[userIndex].email;
     userData[userIndex].password = password || userData[userIndex].password;
 
-    fs.writeFileSync("./database/user.json", JSON.stringify(userData), "utf-8");
+    fs.writeFileSync(
+      "./database/dbUser.json",
+      JSON.stringify(userData),
+      "utf-8"
+    );
     const response = formatResponse(userData[userIndex]);
     return res.json(response);
   }
@@ -106,7 +110,11 @@ class UserController {
     }
 
     const deletedUser = userData.splice(userIndex, 1)[0];
-    fs.writeFileSync("./database/user.json", JSON.stringify(userData), "utf-8");
+    fs.writeFileSync(
+      "./database/dbUser.json",
+      JSON.stringify(userData),
+      "utf-8"
+    );
     const response = formatResponse(deletedUser, "Data Delete successfully");
     return res.json(response);
   }

@@ -1,4 +1,4 @@
-let item = [
+[
   {
     idItem: 1,
     itemName: "Selimut 01",
