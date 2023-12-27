@@ -1,7 +1,7 @@
 function formatResponse(data, message) {
   return {
-    data: data,
-    message: message,
+    data: data ? data : {},
+    message: message ? message : "success",
   };
 }
 
